@@ -1,4 +1,4 @@
-# Rift — Autonomous TensorRT Failure Recovery
+# Rift : Autonomous TensorRT Failure Recovery
 
 > **Automatically diagnose, repair, and verify TensorRT migration failures** when naive PyTorch → ONNX → TensorRT pipelines break.
 
