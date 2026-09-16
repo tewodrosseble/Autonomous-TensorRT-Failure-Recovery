@@ -558,7 +558,7 @@ Rift enforces strict experimental integrity to ensure benchmark results are repr
 
 ## License
 
-License not yet specified. Add a `LICENSE` file before public distribution.
+GPL-3.0 license
 
 ---
 
