@@ -1,0 +1,119 @@
+{
+  "schema": "rift-trajectory-v2",
+  "model": "bert_base",
+  "intended_category": "unsupported_operator",
+  "actual_category": "export_api_incompatibility",
+  "attempts": [
+    {
+      "attempt": 1,
+      "category": "export_api_incompatibility",
+      "repair": {
+        "success": true,
+        "duration_sec": 33.09123468399048,
+        "output": "/content/rift_workspace/onnx/repair_bert_base_1.onnx",
+        "strategy": "legacy_torchscript_dynamic_axes",
+        "changes": [
+          {
+            "action": "re-exported via legacy_torchscript_dynamic_axes"
+          }
+        ]
+      },
+      "optimization_profile_args": [
+        "--minShapes=input_ids:1x1,token_type_ids:1x1,attention_mask:1x1",
+        "--optShapes=input_ids:1x32,token_type_ids:1x32,attention_mask:1x32",
+        "--maxShapes=input_ids:1x32,token_type_ids:1x32,attention_mask:1x32"
+      ],
+      "build": {
+        "returncode": 0,
+        "engine_exists": true,
+        "duration_sec": 58.57107949256897,
+        "engine_path": "/content/rift_workspace/engines/candidate_bert_base_1.engine",
+        "stderr_tail": "[08/31/2026-15:55:05] [W] [TRT] ModelImporter.cpp:826: Make sure input input_ids has Int64 binding.\n[08/31/2026-15:55:05] [W] [TRT] ModelImporter.cpp:826: Make sure input token_type_ids has Int64 binding.\n[08/31/2026-15:55:05] [W] [TRT] ModelImporter.cpp:826: Make sure input attention_mask has Int64 binding.\n[08/31/2026-15:56:02] [W] * GPU compute time is unstable, with coefficient of variance = 6.87444%.\n[08/31/2026-15:56:02] [W]   If not already in use, locking GPU clock frequency may improve the stability."
+      },
+      "profile": {
+        "returncode": 0,
+        "timed_out": false,
+        "stdout_tail": "[08/31/2026-15:56:13] [I] Latency: min = 2.42053 ms, max = 2.49805 ms, mean = 2.46247 ms, median = 2.46387 ms, percentile(90%) = 2.48242 ms, percentile(95%) = 2.48364 ms, percentile(99%) = 2.4873 ms\n[08/31/2026-15:56:13] [I] Enqueue Time: min = 0.078125 ms, max = 2.14746 ms, mean = 0.100085 ms, median = 0.0930176 ms, percentile(90%) = 0.123047 ms, percentile(95%) = 0.131836 ms, percentile(99%) = 0.154785 ms\n[08/31/2026-15:56:13] [I] H2D Latency: min = 0 ms, max = 0 ms, mean = 0 ms, median = 0 ms, percentile(90%) = 0 ms, percentile(95%) = 0 ms, percentile(99%) = 0 ms\n[08/31/2026-15:56:13] [I] GPU Compute Time: min = 2.42053 ms, max = 2.49805 ms, mean = 2.46247 ms, median = 2.46387 ms, percentile(90%) = 2.48242 ms, percentile(95%) = 2.48364 ms, percentile(99%) = 2.4873 ms\n[08/31/2026-15:56:13] [I] D2H Latency: min = 0 ms, max = 0 ms, mean = 0 ms, median = 0 ms, percentile(90%) = 0 ms, percentile(95%) = 0 ms, percentile(99%) = 0 ms\n[08/31/2026-15:56:13] [I] Total Host Walltime: 10.0048 s\n[08/31/2026-15:56:13] [I] Total GPU Compute Time: 9.99515 s\n[08/31/2026-15:56:13] [I] Explanations of the performance metrics are printed in the verbose logs.\n[08/31/2026-15:56:13] [V] \n[08/31/2026-15:56:13] [V] === Explanations of the performance metrics ===\n[08/31/2026-15:56:13] [V] Total Host Walltime: the host walltime from when the first query (after warmups) is enqueued to when the last query is completed.\n[08/31/2026-15:56:13] [V] GPU Compute Time: the GPU latency to execute the kernels for a query.\n[08/31/2026-15:56:13] [V] Total GPU Compute Time: the summation of the GPU Compute Time of all the queries. If this is significantly shorter than Total Host Walltime, the GPU may be under-utilized because of host-side overheads or data transfers.\n[08/31/2026-15:56:13] [V] Throughput: the observed throughput computed by dividing the number of queries by the Total Host Walltime. If this is significantly lower than the reciprocal of GPU Compute Time, the GPU may be under-utilized because of host-side overheads or data transfers.\n[08/31/2026-15:56:13] [V] Enqueue Time: the host latency to enqueue a query. If this is longer than GPU Compute Time, the GPU may be under-utilized.\n[08/31/2026-15:56:13] [V] H2D Latency: the latency for host-to-device data transfers for input tensors of a single query.\n[08/31/2026-15:56:13] [V] D2H Latency: the latency for device-to-host data transfers for output tensors of a single query.\n[08/31/2026-15:56:13] [V] Latency: the summation of H2D Latency, GPU Compute Time, and D2H Latency. This is the latency to infer a single query.\n[08/31/2026-15:56:13] [I] \n&&&& PASSED TensorRT.trtexec [TensorRT v110201] [b2] # /usr/bin/trtexec --loadEngine=/content/rift_workspace/engines/candidate_bert_base_1.engine --warmUp=100 --iterations=100 --duration=10 --verbose",
+        "stderr_tail": "[08/31/2026-15:56:03] [W] Shape missing for input with dynamic shape: input_idsAutomatically setting shape to: 1x1\n[08/31/2026-15:56:03] [W] Shape missing for input with dynamic shape: token_type_idsAutomatically setting shape to: 1x1\n[08/31/2026-15:56:03] [W] Shape missing for input with dynamic shape: attention_maskAutomatically setting shape to: 1x1"
+      },
+      "precision": {
+        "cosine_similarity": 0.8881190365311686,
+        "threshold": 0.99,
+        "passed": false,
+        "metric": "primary_output_cosine"
+      }
+    },
+    {
+      "attempt": 2,
+      "category": "export_api_incompatibility",
+      "repair": {
+        "success": true,
+        "duration_sec": 24.10093903541565,
+        "output": "/content/rift_workspace/onnx/repair_bert_base_2.onnx",
+        "strategy": "static_shapes_no_dynamic",
+        "changes": [
+          {
+            "action": "re-exported via static_shapes_no_dynamic"
+          }
+        ]
+      },
+      "optimization_profile_args": [],
+      "build": {
+        "returncode": 0,
+        "engine_exists": true,
+        "duration_sec": 59.15157461166382,
+        "engine_path": "/content/rift_workspace/engines/candidate_bert_base_2.engine",
+        "stderr_tail": "[08/31/2026-15:56:39] [W] [TRT] ModelImporter.cpp:826: Make sure input input_ids has Int64 binding.\n[08/31/2026-15:56:39] [W] [TRT] ModelImporter.cpp:826: Make sure input token_type_ids has Int64 binding.\n[08/31/2026-15:56:39] [W] [TRT] ModelImporter.cpp:826: Make sure input attention_mask has Int64 binding.\n[08/31/2026-15:57:37] [W] * GPU compute time is unstable, with coefficient of variance = 3.7636%.\n[08/31/2026-15:57:37] [W]   If not already in use, locking GPU clock frequency may improve the stability."
+      },
+      "profile": {
+        "returncode": 0,
+        "timed_out": false,
+        "stdout_tail": "[08/31/2026-15:57:49] [I] Latency: min = 2.74745 ms, max = 4.23117 ms, mean = 2.86721 ms, median = 2.86914 ms, percentile(90%) = 2.87988 ms, percentile(95%) = 2.88525 ms, percentile(99%) = 2.92578 ms\n[08/31/2026-15:57:49] [I] Enqueue Time: min = 0.0766602 ms, max = 2.19373 ms, mean = 0.0964235 ms, median = 0.0874023 ms, percentile(90%) = 0.118774 ms, percentile(95%) = 0.12793 ms, percentile(99%) = 0.147217 ms\n[08/31/2026-15:57:49] [I] H2D Latency: min = 0 ms, max = 0 ms, mean = 0 ms, median = 0 ms, percentile(90%) = 0 ms, percentile(95%) = 0 ms, percentile(99%) = 0 ms\n[08/31/2026-15:57:49] [I] GPU Compute Time: min = 2.74745 ms, max = 4.23117 ms, mean = 2.86721 ms, median = 2.86914 ms, percentile(90%) = 2.87988 ms, percentile(95%) = 2.88525 ms, percentile(99%) = 2.92578 ms\n[08/31/2026-15:57:49] [I] D2H Latency: min = 0 ms, max = 0 ms, mean = 0 ms, median = 0 ms, percentile(90%) = 0 ms, percentile(95%) = 0 ms, percentile(99%) = 0 ms\n[08/31/2026-15:57:49] [I] Total Host Walltime: 10.0061 s\n[08/31/2026-15:57:49] [I] Total GPU Compute Time: 9.99795 s\n[08/31/2026-15:57:49] [I] Explanations of the performance metrics are printed in the verbose logs.\n[08/31/2026-15:57:49] [V] \n[08/31/2026-15:57:49] [V] === Explanations of the performance metrics ===\n[08/31/2026-15:57:49] [V] Total Host Walltime: the host walltime from when the first query (after warmups) is enqueued to when the last query is completed.\n[08/31/2026-15:57:49] [V] GPU Compute Time: the GPU latency to execute the kernels for a query.\n[08/31/2026-15:57:49] [V] Total GPU Compute Time: the summation of the GPU Compute Time of all the queries. If this is significantly shorter than Total Host Walltime, the GPU may be under-utilized because of host-side overheads or data transfers.\n[08/31/2026-15:57:49] [V] Throughput: the observed throughput computed by dividing the number of queries by the Total Host Walltime. If this is significantly lower than the reciprocal of GPU Compute Time, the GPU may be under-utilized because of host-side overheads or data transfers.\n[08/31/2026-15:57:49] [V] Enqueue Time: the host latency to enqueue a query. If this is longer than GPU Compute Time, the GPU may be under-utilized.\n[08/31/2026-15:57:49] [V] H2D Latency: the latency for host-to-device data transfers for input tensors of a single query.\n[08/31/2026-15:57:49] [V] D2H Latency: the latency for device-to-host data transfers for output tensors of a single query.\n[08/31/2026-15:57:49] [V] Latency: the summation of H2D Latency, GPU Compute Time, and D2H Latency. This is the latency to infer a single query.\n[08/31/2026-15:57:49] [I] \n&&&& PASSED TensorRT.trtexec [TensorRT v110201] [b2] # /usr/bin/trtexec --loadEngine=/content/rift_workspace/engines/candidate_bert_base_2.engine --warmUp=100 --iterations=100 --duration=10 --verbose",
+        "stderr_tail": "[08/31/2026-15:57:49] [W] * GPU compute time is unstable, with coefficient of variance = 4.34581%.\n[08/31/2026-15:57:49] [W]   If not already in use, locking GPU clock frequency may improve the stability."
+      },
+      "precision": {
+        "cosine_similarity": 0.8950621932646158,
+        "threshold": 0.99,
+        "passed": false,
+        "metric": "primary_output_cosine"
+      }
+    },
+    {
+      "attempt": 3,
+      "category": "export_api_incompatibility",
+      "repair": {
+        "success": true,
+        "duration_sec": 21.452434539794922,
+        "output": "/content/rift_workspace/onnx/repair_bert_base_3.onnx",
+        "strategy": "static_shapes_no_dynamic",
+        "changes": [
+          {
+            "action": "re-exported via static_shapes_no_dynamic"
+          }
+        ]
+      },
+      "optimization_profile_args": [],
+      "build": {
+        "returncode": 0,
+        "engine_exists": true,
+        "duration_sec": 33.40584707260132,
+        "engine_path": "/content/rift_workspace/engines/candidate_bert_base_3.engine",
+        "stderr_tail": "[08/31/2026-15:58:15] [W] [TRT] ModelImporter.cpp:826: Make sure input input_ids has Int64 binding.\n[08/31/2026-15:58:15] [W] [TRT] ModelImporter.cpp:826: Make sure input token_type_ids has Int64 binding.\n[08/31/2026-15:58:15] [W] [TRT] ModelImporter.cpp:826: Make sure input attention_mask has Int64 binding.\n[08/31/2026-15:58:43] [W] * GPU compute time is unstable, with coefficient of variance = 8.94822%.\n[08/31/2026-15:58:43] [W]   If not already in use, locking GPU clock frequency may improve the stability."
+      },
+      "profile": {
+        "returncode": 0,
+        "timed_out": false,
+        "stdout_tail": "[08/31/2026-15:58:56] [I] Latency: min = 2.78528 ms, max = 4.24756 ms, mean = 2.89117 ms, median = 2.88232 ms, percentile(90%) = 2.9248 ms, percentile(95%) = 2.92969 ms, percentile(99%) = 4.00004 ms\n[08/31/2026-15:58:56] [I] Enqueue Time: min = 0.0776367 ms, max = 1.43665 ms, mean = 0.0941616 ms, median = 0.0864258 ms, percentile(90%) = 0.116333 ms, percentile(95%) = 0.123535 ms, percentile(99%) = 0.141602 ms\n[08/31/2026-15:58:56] [I] H2D Latency: min = 0 ms, max = 0 ms, mean = 0 ms, median = 0 ms, percentile(90%) = 0 ms, percentile(95%) = 0 ms, percentile(99%) = 0 ms\n[08/31/2026-15:58:56] [I] GPU Compute Time: min = 2.78528 ms, max = 4.24756 ms, mean = 2.89117 ms, median = 2.88232 ms, percentile(90%) = 2.9248 ms, percentile(95%) = 2.92969 ms, percentile(99%) = 4.00004 ms\n[08/31/2026-15:58:56] [I] D2H Latency: min = 0 ms, max = 0 ms, mean = 0 ms, median = 0 ms, percentile(90%) = 0 ms, percentile(95%) = 0 ms, percentile(99%) = 0 ms\n[08/31/2026-15:58:56] [I] Total Host Walltime: 10.0056 s\n[08/31/2026-15:58:56] [I] Total GPU Compute Time: 9.99765 s\n[08/31/2026-15:58:56] [I] Explanations of the performance metrics are printed in the verbose logs.\n[08/31/2026-15:58:56] [V] \n[08/31/2026-15:58:56] [V] === Explanations of the performance metrics ===\n[08/31/2026-15:58:56] [V] Total Host Walltime: the host walltime from when the first query (after warmups) is enqueued to when the last query is completed.\n[08/31/2026-15:58:56] [V] GPU Compute Time: the GPU latency to execute the kernels for a query.\n[08/31/2026-15:58:56] [V] Total GPU Compute Time: the summation of the GPU Compute Time of all the queries. If this is significantly shorter than Total Host Walltime, the GPU may be under-utilized because of host-side overheads or data transfers.\n[08/31/2026-15:58:56] [V] Throughput: the observed throughput computed by dividing the number of queries by the Total Host Walltime. If this is significantly lower than the reciprocal of GPU Compute Time, the GPU may be under-utilized because of host-side overheads or data transfers.\n[08/31/2026-15:58:56] [V] Enqueue Time: the host latency to enqueue a query. If this is longer than GPU Compute Time, the GPU may be under-utilized.\n[08/31/2026-15:58:56] [V] H2D Latency: the latency for host-to-device data transfers for input tensors of a single query.\n[08/31/2026-15:58:56] [V] D2H Latency: the latency for device-to-host data transfers for output tensors of a single query.\n[08/31/2026-15:58:56] [V] Latency: the summation of H2D Latency, GPU Compute Time, and D2H Latency. This is the latency to infer a single query.\n[08/31/2026-15:58:56] [I] \n&&&& PASSED TensorRT.trtexec [TensorRT v110201] [b2] # /usr/bin/trtexec --loadEngine=/content/rift_workspace/engines/candidate_bert_base_3.engine --warmUp=100 --iterations=100 --duration=10 --verbose",
+        "stderr_tail": "[08/31/2026-15:58:56] [W] * GPU compute time is unstable, with coefficient of variance = 4.72834%.\n[08/31/2026-15:58:56] [W]   If not already in use, locking GPU clock frequency may improve the stability."
+      },
+      "precision": {
+        "cosine_similarity": 0.8998364745056318,
+        "threshold": 0.99,
+        "passed": false,
+        "metric": "primary_output_cosine"
+      }
+    }
+  ],
+  "final_status": "exhausted_retries",
+  "total_repair_time_sec": 266.47432804107666
+}

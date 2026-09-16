@@ -1,0 +1,47 @@
+{
+  "schema": "rift-trajectory-v2",
+  "model": "yolov8",
+  "intended_category": "precision_flag_removed",
+  "actual_category": "precision_flag_removed",
+  "attempts": [
+    {
+      "attempt": 1,
+      "category": "precision_flag_removed",
+      "repair": {
+        "success": true,
+        "duration_sec": 2.1219253540039062e-05,
+        "output": "/content/rift_workspace/onnx/baseline_yolov8.onnx",
+        "fp16_baked": false,
+        "changes": [
+          {
+            "action": "drop removed --fp16 flag; build strongly-typed",
+            "fp16_baked": false,
+            "precision": "FP32"
+          }
+        ]
+      },
+      "optimization_profile_args": [],
+      "build": {
+        "returncode": 0,
+        "engine_exists": true,
+        "duration_sec": 86.16159462928772,
+        "engine_path": "/content/rift_workspace/engines/candidate_yolov8_1.engine",
+        "stderr_tail": ""
+      },
+      "profile": {
+        "returncode": 0,
+        "timed_out": false,
+        "stdout_tail": "[08/31/2026-16:00:33] [I] Latency: min = 2.86311 ms, max = 3.74451 ms, mean = 3.56706 ms, median = 3.55524 ms, percentile(90%) = 3.61523 ms, percentile(95%) = 3.62061 ms, percentile(99%) = 3.67236 ms\n[08/31/2026-16:00:33] [I] Enqueue Time: min = 0.0664062 ms, max = 2.26953 ms, mean = 0.0861092 ms, median = 0.078125 ms, percentile(90%) = 0.112305 ms, percentile(95%) = 0.121094 ms, percentile(99%) = 0.138672 ms\n[08/31/2026-16:00:33] [I] H2D Latency: min = 0 ms, max = 0 ms, mean = 0 ms, median = 0 ms, percentile(90%) = 0 ms, percentile(95%) = 0 ms, percentile(99%) = 0 ms\n[08/31/2026-16:00:33] [I] GPU Compute Time: min = 2.86311 ms, max = 3.74451 ms, mean = 3.56706 ms, median = 3.55524 ms, percentile(90%) = 3.61523 ms, percentile(95%) = 3.62061 ms, percentile(99%) = 3.67236 ms\n[08/31/2026-16:00:33] [I] D2H Latency: min = 0 ms, max = 0 ms, mean = 0 ms, median = 0 ms, percentile(90%) = 0 ms, percentile(95%) = 0 ms, percentile(99%) = 0 ms\n[08/31/2026-16:00:33] [I] Total Host Walltime: 10.0057 s\n[08/31/2026-16:00:33] [I] Total GPU Compute Time: 9.99491 s\n[08/31/2026-16:00:33] [I] Explanations of the performance metrics are printed in the verbose logs.\n[08/31/2026-16:00:33] [V] \n[08/31/2026-16:00:33] [V] === Explanations of the performance metrics ===\n[08/31/2026-16:00:33] [V] Total Host Walltime: the host walltime from when the first query (after warmups) is enqueued to when the last query is completed.\n[08/31/2026-16:00:33] [V] GPU Compute Time: the GPU latency to execute the kernels for a query.\n[08/31/2026-16:00:33] [V] Total GPU Compute Time: the summation of the GPU Compute Time of all the queries. If this is significantly shorter than Total Host Walltime, the GPU may be under-utilized because of host-side overheads or data transfers.\n[08/31/2026-16:00:33] [V] Throughput: the observed throughput computed by dividing the number of queries by the Total Host Walltime. If this is significantly lower than the reciprocal of GPU Compute Time, the GPU may be under-utilized because of host-side overheads or data transfers.\n[08/31/2026-16:00:33] [V] Enqueue Time: the host latency to enqueue a query. If this is longer than GPU Compute Time, the GPU may be under-utilized.\n[08/31/2026-16:00:33] [V] H2D Latency: the latency for host-to-device data transfers for input tensors of a single query.\n[08/31/2026-16:00:33] [V] D2H Latency: the latency for device-to-host data transfers for output tensors of a single query.\n[08/31/2026-16:00:33] [V] Latency: the summation of H2D Latency, GPU Compute Time, and D2H Latency. This is the latency to infer a single query.\n[08/31/2026-16:00:33] [I] \n&&&& PASSED TensorRT.trtexec [TensorRT v110201] [b2] # /usr/bin/trtexec --loadEngine=/content/rift_workspace/engines/candidate_yolov8_1.engine --warmUp=100 --iterations=100 --duration=10 --verbose",
+        "stderr_tail": ""
+      },
+      "precision": {
+        "cosine_similarity": 0.9999999999999799,
+        "threshold": 0.99,
+        "passed": true,
+        "metric": "primary_output_cosine"
+      }
+    }
+  ],
+  "final_status": "repaired_and_verified",
+  "total_repair_time_sec": 97.61897826194763
+}

@@ -1,0 +1,52 @@
+[
+  {
+    "model": "ResNet-50",
+    "baseline_status": "SUCCESS",
+    "baseline_success": true,
+    "rift_status": "baseline_already_succeeded",
+    "rift_verified_success": true,
+    "max_cosine": 0.9999999999998979,
+    "repair_time_sec": null,
+    "retries": 0
+  },
+  {
+    "model": "ViT-Base",
+    "baseline_status": "MODEL_EXPORT_FAILURE",
+    "baseline_success": false,
+    "rift_status": "repaired_and_verified",
+    "rift_verified_success": true,
+    "max_cosine": 0.9999999999988204,
+    "repair_time_sec": 109.29415655136108,
+    "retries": 1
+  },
+  {
+    "model": "BERT-Base",
+    "baseline_status": "MODEL_EXPORT_FAILURE",
+    "baseline_success": false,
+    "rift_status": "exhausted_retries",
+    "rift_verified_success": false,
+    "max_cosine": 0.8998364745056318,
+    "repair_time_sec": 266.47432804107666,
+    "retries": 3
+  },
+  {
+    "model": "YOLOv8n",
+    "baseline_status": "TENSORRT_BUILD_FAILURE",
+    "baseline_success": false,
+    "rift_status": "repaired_and_verified",
+    "rift_verified_success": true,
+    "max_cosine": 0.9999999999999799,
+    "repair_time_sec": 97.61897826194763,
+    "retries": 1
+  },
+  {
+    "model": "Audio Spectrogram Transformer",
+    "baseline_status": "TENSORRT_BUILD_FAILURE",
+    "baseline_success": false,
+    "rift_status": "repaired_and_verified",
+    "rift_verified_success": true,
+    "max_cosine": 0.9999999999942033,
+    "repair_time_sec": 63.03703808784485,
+    "retries": 1
+  }
+]

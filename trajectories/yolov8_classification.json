@@ -1,0 +1,9 @@
+{
+  "schema": "rift-classification-v1",
+  "model": "yolov8",
+  "classification": {
+    "label": "precision_flag_removed",
+    "scores": {},
+    "evidence_snippet": "[08/31/2026-15:52:29] [E] Unknown option: --fp16 "
+  }
+}

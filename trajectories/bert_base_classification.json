@@ -1,0 +1,9 @@
+{
+  "schema": "rift-classification-v1",
+  "model": "bert_base",
+  "classification": {
+    "label": "export_api_incompatibility",
+    "scores": {},
+    "evidence_snippet": "ValueError: treespec.unflatten(leaves): `leaves` has length 3 but the spec refers to a pytree that holds 1 items (TreeSpec(list, None, [*])).\n    raise RuntimeError(\nRuntimeError: # Failed to convert 'dynamic_axes' to 'dynamic_shapes'. Please provide 'dynamic_shapes' directly. Refer to the documentation for 'torch.export.export' for more information on dynamic shapes."
+  }
+}

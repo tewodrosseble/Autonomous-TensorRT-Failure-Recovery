@@ -1,0 +1,6 @@
+{
+  "schema": "rift-trajectory-v2",
+  "model": "resnet50",
+  "final_status": "baseline_already_succeeded",
+  "attempts": []
+}

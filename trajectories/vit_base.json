@@ -1,0 +1,45 @@
+{
+  "schema": "rift-trajectory-v2",
+  "model": "vit_base",
+  "intended_category": "shape_mismatch",
+  "actual_category": "export_api_incompatibility",
+  "attempts": [
+    {
+      "attempt": 1,
+      "category": "export_api_incompatibility",
+      "repair": {
+        "success": true,
+        "duration_sec": 35.89551830291748,
+        "output": "/content/rift_workspace/onnx/repair_vit_base_1.onnx",
+        "strategy": "legacy_torchscript_dynamic_axes",
+        "changes": [
+          {
+            "action": "re-exported via legacy_torchscript_dynamic_axes"
+          }
+        ]
+      },
+      "optimization_profile_args": [],
+      "build": {
+        "returncode": 0,
+        "engine_exists": true,
+        "duration_sec": 58.780455112457275,
+        "engine_path": "/content/rift_workspace/engines/candidate_vit_base_1.engine",
+        "stderr_tail": "[08/31/2026-15:54:14] [W] * GPU compute time is unstable, with coefficient of variance = 3.57512%.\n[08/31/2026-15:54:14] [W]   If not already in use, locking GPU clock frequency may improve the stability."
+      },
+      "profile": {
+        "returncode": 0,
+        "timed_out": false,
+        "stdout_tail": "[08/31/2026-15:54:29] [I] Latency: min = 12.5186 ms, max = 22.6909 ms, mean = 13.1334 ms, median = 13.0576 ms, percentile(90%) = 13.2935 ms, percentile(95%) = 13.3052 ms, percentile(99%) = 13.3682 ms\n[08/31/2026-15:54:29] [I] Enqueue Time: min = 0.0986328 ms, max = 4.20435 ms, mean = 0.170032 ms, median = 0.154785 ms, percentile(90%) = 0.192566 ms, percentile(95%) = 0.205566 ms, percentile(99%) = 0.391602 ms\n[08/31/2026-15:54:29] [I] H2D Latency: min = 0 ms, max = 0 ms, mean = 0 ms, median = 0 ms, percentile(90%) = 0 ms, percentile(95%) = 0 ms, percentile(99%) = 0 ms\n[08/31/2026-15:54:29] [I] GPU Compute Time: min = 12.5186 ms, max = 22.6909 ms, mean = 13.1334 ms, median = 13.0576 ms, percentile(90%) = 13.2935 ms, percentile(95%) = 13.3052 ms, percentile(99%) = 13.3682 ms\n[08/31/2026-15:54:29] [I] D2H Latency: min = 0 ms, max = 0 ms, mean = 0 ms, median = 0 ms, percentile(90%) = 0 ms, percentile(95%) = 0 ms, percentile(99%) = 0 ms\n[08/31/2026-15:54:29] [I] Total Host Walltime: 9.99659 s\n[08/31/2026-15:54:29] [I] Total GPU Compute Time: 9.9945 s\n[08/31/2026-15:54:29] [I] Explanations of the performance metrics are printed in the verbose logs.\n[08/31/2026-15:54:29] [V] \n[08/31/2026-15:54:29] [V] === Explanations of the performance metrics ===\n[08/31/2026-15:54:29] [V] Total Host Walltime: the host walltime from when the first query (after warmups) is enqueued to when the last query is completed.\n[08/31/2026-15:54:29] [V] GPU Compute Time: the GPU latency to execute the kernels for a query.\n[08/31/2026-15:54:29] [V] Total GPU Compute Time: the summation of the GPU Compute Time of all the queries. If this is significantly shorter than Total Host Walltime, the GPU may be under-utilized because of host-side overheads or data transfers.\n[08/31/2026-15:54:29] [V] Throughput: the observed throughput computed by dividing the number of queries by the Total Host Walltime. If this is significantly lower than the reciprocal of GPU Compute Time, the GPU may be under-utilized because of host-side overheads or data transfers.\n[08/31/2026-15:54:29] [V] Enqueue Time: the host latency to enqueue a query. If this is longer than GPU Compute Time, the GPU may be under-utilized.\n[08/31/2026-15:54:29] [V] H2D Latency: the latency for host-to-device data transfers for input tensors of a single query.\n[08/31/2026-15:54:29] [V] D2H Latency: the latency for device-to-host data transfers for output tensors of a single query.\n[08/31/2026-15:54:29] [V] Latency: the summation of H2D Latency, GPU Compute Time, and D2H Latency. This is the latency to infer a single query.\n[08/31/2026-15:54:29] [I] \n&&&& PASSED TensorRT.trtexec [TensorRT v110201] [b2] # /usr/bin/trtexec --loadEngine=/content/rift_workspace/engines/candidate_vit_base_1.engine --warmUp=100 --iterations=100 --duration=10 --verbose",
+        "stderr_tail": "[08/31/2026-15:54:29] [W] * GPU compute time is unstable, with coefficient of variance = 6.54887%.\n[08/31/2026-15:54:29] [W]   If not already in use, locking GPU clock frequency may improve the stability."
+      },
+      "precision": {
+        "cosine_similarity": 0.9999999999988204,
+        "threshold": 0.99,
+        "passed": true,
+        "metric": "primary_output_cosine"
+      }
+    }
+  ],
+  "final_status": "repaired_and_verified",
+  "total_repair_time_sec": 109.29415655136108
+}
